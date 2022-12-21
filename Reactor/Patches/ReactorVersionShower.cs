@@ -72,9 +72,8 @@ public static class ReactorVersionShower
     public static void UpdateText()
     {
         if (Text == null) return;
-        Text.text = "Reactor " + ReactorPlugin.Version;
-        Text.text += "\nBepInEx " + ToStringWithoutBuild(Paths.BepInExVersion);
-        Text.text += "\nMods: " + IL2CPPChainloader.Instance.Plugins.Count;
+        Text.text = "This is not the official reactor Plugin"
+        Text.text += "\Official one is in https://github.com/NuclearPowered/Reactor"
         TextUpdated?.Invoke(Text);
     }
 
