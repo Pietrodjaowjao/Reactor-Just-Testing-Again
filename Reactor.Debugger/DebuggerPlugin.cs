@@ -109,6 +109,10 @@ public partial class DebuggerPlugin : BasePlugin
             {
                 TestWindow.Enabled = !TestWindow.Enabled;
             }
+              if (Input.GetKeyDown(KeyCode.F2))
+            {
+                PlayerControl.LocalPlayer.RpcSetScanner(true);
+            }
         }
 
         private void OnGUI()
