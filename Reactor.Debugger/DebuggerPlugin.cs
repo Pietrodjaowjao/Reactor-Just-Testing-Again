@@ -48,7 +48,7 @@ public partial class DebuggerPlugin : BasePlugin
                 GUILayout.Label("Name: " + DataManager.Player.Customization.Name);
                 DisableGameEnd = GUILayout.Toggle(DisableGameEnd, "Disable game end");
 
-                if (ShipStatus.Instance && AmongUsClient.Instance.AmHost)
+                if (ShipStatus.Instance)
                 {
                     if (GUILayout.Button("Force game end"))
                     {
@@ -62,7 +62,7 @@ public partial class DebuggerPlugin : BasePlugin
                     }
                 }
 
-                if (TutorialManager.InstanceExists && PlayerControl.LocalPlayer)
+                if (PlayerControl.LocalPlayer)
                 {
                     var data = PlayerControl.LocalPlayer.Data;
 
