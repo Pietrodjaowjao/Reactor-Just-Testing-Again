@@ -74,7 +74,7 @@ public partial class DebuggerPlugin : BasePlugin
 
                     if (GUILayout.Button("Spawn a dummy"))
                     {
-                        var playerControl = Instantiate(TutorialManager.Instance.PlayerPrefab);
+                        var playerControl = Instantiate(AmongUsClient.Instance.PlayerPrefab);
                         var i = playerControl.PlayerId = (byte) GameData.Instance.GetAvailableId();
                         GameData.Instance.AddPlayer(playerControl);
                         AmongUsClient.Instance.Spawn(playerControl, -2, SpawnFlags.None);
