@@ -72,8 +72,7 @@ public static class ReactorVersionShower
     public static void UpdateText()
     {
         if (Text == null) return;
-        Text.text = "This is not the official reactor Plugin";
-        Text.text += "\Official one is in https://github.com/NuclearPowered/Reactor";
+        Text.text = "This is not the official reactor Plugin, official one is https://github.com/NuclearPowered/Reactor";
         TextUpdated?.Invoke(Text);
     }
 
