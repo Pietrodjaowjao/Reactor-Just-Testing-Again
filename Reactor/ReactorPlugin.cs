@@ -68,7 +68,6 @@ public partial class ReactorPlugin : BasePlugin
         this.AddComponent<Coroutines.Component>();
         this.AddComponent<Dispatcher>();
 
-        ReactorVersionShower.Initialize();
         FreeNamePatch.Initialize();
         DefaultBundle.Load();
 
