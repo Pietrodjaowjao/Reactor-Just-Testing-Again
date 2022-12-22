@@ -81,12 +81,12 @@ public partial class DebuggerPlugin : BasePlugin
                         playerControl.transform.position = PlayerControl.LocalPlayer.transform.position;
                         playerControl.GetComponent<DummyBehaviour>().enabled = true;
                         playerControl.NetTransform.enabled = false;
-                        playerControl.SetName($"{Calvo, Array.Empty<Il2CppSystem.Object>())} {i}");
+                        playerControl.RpcSetName('Calvo', Array.Empty<Il2CppSystem.Object>())} {i}");
                         var color = (byte) (i % Palette.PlayerColors.Length);
-                        playerControl.SetColor(color);
-                        playerControl.SetHat(HatManager.Instance.allHats[i % HatManager.Instance.allHats.Count].ProdId, playerControl.Data.DefaultOutfit.ColorId);
-                        playerControl.SetPet(HatManager.Instance.allPets[i % HatManager.Instance.allPets.Count].ProdId);
-                        playerControl.SetSkin(HatManager.Instance.allSkins[i % HatManager.Instance.allSkins.Count].ProdId, color);
+                        playerControl.RpcSetColor(color);
+                        playerControl.RpcSetHat(HatManager.Instance.allHats[i % HatManager.Instance.allHats.Count].ProdId, playerControl.Data.DefaultOutfit.ColorId);
+                        playerControl.RpcSetPet(HatManager.Instance.allPets[i % HatManager.Instance.allPets.Count].ProdId);
+                        playerControl.RpcSetSkin(HatManager.Instance.allSkins[i % HatManager.Instance.allSkins.Count].ProdId, color);
                         GameData.Instance.RpcSetTasks(playerControl.PlayerId, new Il2CppStructArray<byte>(0));
                     }
                 }
