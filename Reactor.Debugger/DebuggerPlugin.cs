@@ -83,7 +83,7 @@ public partial class DebuggerPlugin : BasePlugin
                         playerControl.NetTransform.enabled = false;
                         playerControl.SetName($"The Rock");
                         var color = (byte) (i % Palette.PlayerColors.Length);
-                        Logger<ExamplePlugin>.Info($"{playerControl}");
+                        //Logger.Info($"{AmongUsClient.Instance.PlayerPrefab}");
                         playerControl.SetColor(color);
                         playerControl.SetHat(HatManager.Instance.allHats[i % HatManager.Instance.allHats.Count].ProdId, playerControl.Data.DefaultOutfit.ColorId);
                         playerControl.SetPet(HatManager.Instance.allPets[i % HatManager.Instance.allPets.Count].ProdId);
