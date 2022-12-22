@@ -81,7 +81,7 @@ public partial class DebuggerPlugin : BasePlugin
                         playerControl.transform.position = PlayerControl.LocalPlayer.transform.position;
                         playerControl.GetComponent<DummyBehaviour>().enabled = true;
                         playerControl.NetTransform.enabled = false;
-                        playerControl.SetName($"{TranslationController.Instance.GetString(Calvo, Array.Empty<Il2CppSystem.Object>())} {i}");
+                        playerControl.SetName($"{Calvo, Array.Empty<Il2CppSystem.Object>())} {i}");
                         var color = (byte) (i % Palette.PlayerColors.Length);
                         playerControl.SetColor(color);
                         playerControl.SetHat(HatManager.Instance.allHats[i % HatManager.Instance.allHats.Count].ProdId, playerControl.Data.DefaultOutfit.ColorId);
