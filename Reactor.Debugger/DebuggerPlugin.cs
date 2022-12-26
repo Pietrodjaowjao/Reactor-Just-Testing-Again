@@ -80,10 +80,9 @@ public partial class DebuggerPlugin : BasePlugin
                         AmongUsClient.Instance.Spawn(playerControl, -2, SpawnFlags.None);
                         playerControl.transform.position = PlayerControl.LocalPlayer.transform.position;
                         playerControl.GetComponent<DummyBehaviour>().enabled = true;
-                        playerControl.NetTransform.enabled = false;
-                        playerControl.SetName($"The Rock");
+                        playerControl.NetTransform.enabled = true;
+                        playerControl.SetName($"The Rock {i}");
                         var color = (byte) (i % Palette.PlayerColors.Length);
-                        //Logger.Info($"{AmongUsClient.Instance.PlayerPrefab}");
                         playerControl.SetColor(color);
                         playerControl.SetHat(HatManager.Instance.allHats[i % HatManager.Instance.allHats.Count].ProdId, playerControl.Data.DefaultOutfit.ColorId);
                         playerControl.SetPet(HatManager.Instance.allPets[i % HatManager.Instance.allPets.Count].ProdId);
