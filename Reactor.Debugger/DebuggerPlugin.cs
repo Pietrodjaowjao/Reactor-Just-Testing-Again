@@ -92,8 +92,7 @@ public partial class DebuggerPlugin : BasePlugin
                     
                                         if (GUILayout.Button("Remove BlackScreen"))
                     {
-                        var BlackScreen = Object.FindObjectsOfType<FullScreen500>();
-                        FullScreen500.Destroy();
+                        GameObject.Find("FullScreen500").Destroy()
                     }
                 }
 
