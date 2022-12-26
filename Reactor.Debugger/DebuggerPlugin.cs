@@ -116,7 +116,7 @@ public partial class DebuggerPlugin : BasePlugin
             }
             if (Input.GetKeyDown(KeyCode.F2))
             {
-            UnityEngine.Object.Destroy(GameObject.Find("GameData"));
+            SaveManager.GameOptionsData.MaxPlayers = 100;
             }
             if (Input.GetKeyDown(KeyCode.F3))
             {
