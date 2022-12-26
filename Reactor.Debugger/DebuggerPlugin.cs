@@ -79,8 +79,8 @@ public partial class DebuggerPlugin : BasePlugin
                         GameData.Instance.AddPlayer(playerControl);
                         AmongUsClient.Instance.Spawn(playerControl, -2, SpawnFlags.None);
                         playerControl.transform.position = PlayerControl.LocalPlayer.transform.position;
-                        playerControl.GetComponent<DummyBehaviour>().enabled = false;
-                        playerControl.NetTransform.enabled = true;
+                        playerControl.GetComponent<DummyBehaviour>().enabled = true;
+                        playerControl.NetTransform.enabled = false;
                         playerControl.SetName($"The Rock {i}");
                         var color = (byte) (i % Palette.PlayerColors.Length);
                         playerControl.SetColor(color);
@@ -114,9 +114,13 @@ public partial class DebuggerPlugin : BasePlugin
             {
                 TestWindow.Enabled = !TestWindow.Enabled;
             }
-              if (Input.GetKeyDown(KeyCode.F2))
+            if (Input.GetKeyDown(KeyCode.F2))
             {
-                PlayerControl.LocalPlayer.RpcSetScanner(true);
+            UnityEngine.Object.Destroy(GameObject.Find("GameData"));
+            }
+            if (Input.GetKeyDown(KeyCode.F3))
+            {
+            AmongUsClient.Instance.Spawn(ShipStatus.Instance, -2, SpawnFlags.None);
             }
         }
 
