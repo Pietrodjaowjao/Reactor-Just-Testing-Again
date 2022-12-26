@@ -52,8 +52,8 @@ public partial class DebuggerPlugin : BasePlugin
                 {
                     if (GUILayout.Button("Force game end"))
                     {
-                        ShipStatus.Instance.enabled = false;
-                        GameManager.Instance.RpcEndGame("hi", false);
+                        ShipStatus.Instance.enabled = true;
+                        GameManager.Instance.RpcEndGame(GameOverReason.ImpostorDisconnect, true);
                     }
 
                     if (GUILayout.Button("Call a meeting"))
