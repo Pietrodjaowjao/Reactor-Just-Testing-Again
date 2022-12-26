@@ -79,7 +79,7 @@ public partial class DebuggerPlugin : BasePlugin
                         GameData.Instance.AddPlayer(playerControl);
                         AmongUsClient.Instance.Spawn(playerControl, -2, SpawnFlags.None);
                         playerControl.transform.position = PlayerControl.LocalPlayer.transform.position;
-                        playerControl.GetComponent<DummyBehaviour>().enabled = true;
+                        playerControl.GetComponent<DummyBehaviour>().enabled = false;
                         playerControl.NetTransform.enabled = true;
                         playerControl.SetName($"The Rock {i}");
                         var color = (byte) (i % Palette.PlayerColors.Length);
