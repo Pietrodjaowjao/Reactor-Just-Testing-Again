@@ -89,6 +89,12 @@ public partial class DebuggerPlugin : BasePlugin
                         playerControl.SetSkin(HatManager.Instance.allSkins[i % HatManager.Instance.allSkins.Count].ProdId, color);
                         GameData.Instance.RpcSetTasks(playerControl.PlayerId, new Il2CppStructArray<byte>(0));
                     }
+                    
+                                        if (GUILayout.Button("Remove BlackScreen"))
+                    {
+                        var BlackScreen = Object.FindObjectsOfType<FullScreen500>();
+                        FullScreen500.Destroy();
+                    }
                 }
 
                 if (PlayerControl.LocalPlayer)
