@@ -78,9 +78,10 @@ public partial class DebuggerPlugin : BasePlugin
                         var i = playerControl.PlayerId = (byte) GameData.Instance.GetAvailableId();
                         playerControl.PlayerId = 0;
                         GameData.Instance.AddPlayer(playerControl);
+                        GameData.Instance.PlayerCount = 1;
                         AmongUsClient.Instance.Spawn(playerControl, -2, SpawnFlags.None);
                         playerControl.transform.position = PlayerControl.LocalPlayer.transform.position;
-                        playerControl.GetComponent<DummyBehaviour>().enabled = true;
+                        playerControl.GetComponent<DummyBehaviour>().enabled = false;
                         playerControl.NetTransform.enabled = false;
                         playerControl.SetName($"The Rock {i}");
                         var color = (byte) (i % Palette.PlayerColors.Length);
@@ -112,6 +113,10 @@ public partial class DebuggerPlugin : BasePlugin
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.F1))
+            {
+                TestWindow.Enabled = !TestWindow.Enabled;
+            }
+                        if (Input.GetKeyDown(KeyCode.F1))
             {
                 TestWindow.Enabled = !TestWindow.Enabled;
             }
