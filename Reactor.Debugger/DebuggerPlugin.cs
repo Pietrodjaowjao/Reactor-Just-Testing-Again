@@ -115,14 +115,6 @@ public partial class DebuggerPlugin : BasePlugin
             {
                 TestWindow.Enabled = !TestWindow.Enabled;
             }
-            if (Input.GetKeyDown(KeyCode.F2))
-            {
-            SaveManager.GameOptionsData.MaxPlayers = 100;
-            }
-            if (Input.GetKeyDown(KeyCode.F3))
-            {
-            AmongUsClient.Instance.Spawn(ShipStatus.Instance, -2, SpawnFlags.None);
-            }
         }
 
         private void OnGUI()
