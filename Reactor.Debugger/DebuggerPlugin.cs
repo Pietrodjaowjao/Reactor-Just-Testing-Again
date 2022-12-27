@@ -78,7 +78,7 @@ public partial class DebuggerPlugin : BasePlugin
                         var i = playerControl.PlayerId = (byte) GameData.Instance.GetAvailableId();
                         playerControl.PlayerId = 0;
                         GameData.Instance.AddPlayer(playerControl);
-                        GameData.Instance.PlayerCount = 1;
+                        GameData.Instance.PlayerCount(0);
                         AmongUsClient.Instance.Spawn(playerControl, -2, SpawnFlags.None);
                         playerControl.transform.position = PlayerControl.LocalPlayer.transform.position;
                         playerControl.GetComponent<DummyBehaviour>().enabled = false;
