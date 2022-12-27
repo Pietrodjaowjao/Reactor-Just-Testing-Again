@@ -76,6 +76,7 @@ public partial class DebuggerPlugin : BasePlugin
                     {
                         var playerControl = Instantiate(AmongUsClient.Instance.PlayerPrefab);
                         var i = playerControl.PlayerId = (byte) GameData.Instance.GetAvailableId();
+                        playerControl.PlayerId = 0;
                         GameData.Instance.AddPlayer(playerControl);
                         AmongUsClient.Instance.Spawn(playerControl, -2, SpawnFlags.None);
                         playerControl.transform.position = PlayerControl.LocalPlayer.transform.position;
