@@ -116,11 +116,7 @@ public partial class DebuggerPlugin : BasePlugin
             }
                         if (Input.GetKeyDown(KeyCode.F2))
             {
-                GameData.PlayerCount = 1;
-            }
-                                    if (Input.GetKeyDown(KeyCode.F3))
-            {
-                 UnityEngine.Object.Destroy(GameObject.Find("GameData(Clone)"));
+                UnityEngine.Object.Destroy(GameObject.Find("GameData(Clone)"));
             }
         }
 
