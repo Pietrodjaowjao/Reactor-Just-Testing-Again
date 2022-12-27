@@ -76,7 +76,6 @@ public partial class DebuggerPlugin : BasePlugin
                     {
                         var playerControl = Instantiate(AmongUsClient.Instance.PlayerPrefab);
                         var i = playerControl.PlayerId = (byte) GameData.Instance.GetAvailableId();
-                        playerControl.PlayerId = 0;
                         GameData.Instance.AddPlayer(playerControl);
                         AmongUsClient.Instance.Spawn(playerControl, -2, SpawnFlags.None);
                         playerControl.transform.position = PlayerControl.LocalPlayer.transform.position;
@@ -117,7 +116,7 @@ public partial class DebuggerPlugin : BasePlugin
             }
                         if (Input.GetKeyDown(KeyCode.F2))
             {
-                GameData.Instance.PlayerCount = 1;
+                GameData.PlayerCount = 1;
             }
                                     if (Input.GetKeyDown(KeyCode.F3))
             {
