@@ -1,10 +1,10 @@
 name: CI
 
-on: ["push", "pull_request"]
+on: ["push", "pull_request", "workflow_dispatch"]
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v3
@@ -23,40 +23,35 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 6.x
+          dotnet-version: 8.0.x
 
       - name: Run the Cake script
         uses: cake-build/cake-action@v1
         with:
           verbosity: Diagnostic
 
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Reactor.dll
-          path: Reactor/bin/Release/net6.0/Reactor.dll
+      - name: Create ZIP with artifacts
+        run: |
+          mkdir -p output
+          cp Reactor/bin/Release/net6.0/Reactor.dll output/
+          cp Reactor/bin/Release/Reactor.*.nupkg output/
+          cp Reactor.Networking.Shared/bin/Release/*.nupkg output/
+          cp Reactor.Debugger/bin/Release/net6.0/Reactor.Debugger.dll output/
+          zip -r artifacts.zip output
 
       - uses: actions/upload-artifact@v3
         with:
-          name: Reactor.nupkg
-          path: Reactor/bin/Release/Reactor.*.nupkg
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Reactor.Networking.Shared.nupkg
-          path: Reactor.Networking.Shared/bin/Release/*.nupkg
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Reactor.Debugger.dll
-          path: Reactor.Debugger/bin/Release/net6.0/Reactor.Debugger.dll
+          name: artifacts
+          path: artifacts.zip
 
       - uses: softprops/action-gh-release@v1
         if: github.ref_type == 'tag'
         with:
           draft: true
-          files: Reactor/bin/Release/net6.0/Reactor.dll
+          files: artifacts.zip
 
       - name: Push nightly NuGet package
         if: github.repository == 'NuclearPowered/Reactor' && github.ref == 'refs/heads/master'
         run: |
-          dotnet nuget push {Reactor/bin/Release/Reactor.*.nupkg,Reactor.Networking.Shared/bin/Release/*.nupkg} --source https://nuget.reactor.gg/v3/index.json --api-key ${{ secrets.REACTOR_NUGET_KEY }}
+          dotnet nuget push Reactor/bin/Release/Reactor.*.nupkg --source https://nuget.reactor.gg/v3/index.json --api-key ${{ secrets.REACTOR_NUGET_KEY }}
+          dotnet nuget push Reactor.Networking.Shared/bin/Release/*.nupkg --source https://nuget.reactor.gg/v3/index.json --api-key ${{ secrets.REACTOR_NUGET_KEY }}
